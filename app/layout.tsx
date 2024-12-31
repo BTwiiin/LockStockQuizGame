@@ -1,6 +1,17 @@
+// app/layout.tsx or app/(whatever)/layout.tsx, 
+// depending on your Next.js folder structure
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+// Import or define your snowflake-related logic (optional)
+function generateSnowflakes() {
+  return Array.from({ length: 50 }).map((_, index) => ({
+    id: index,
+    animationDuration: `${Math.random() * 3 + 5}s`,
+    leftPosition: `${Math.random() * 100}%`, 
+  }));
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +30,43 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const snowflakes = generateSnowflakes();
+
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          relative 
+          min-h-screen 
+          w-full 
+          overflow-hidden 
+          bg-blue-500 
+          ${geistSans.variable} 
+          ${geistMono.variable} 
+          antialiased
+        `}
       >
-        {children}
+        <div className="absolute inset-0 pointer-events-none z-5 snowflakes">
+          {snowflakes.map((flake) => (
+            <div
+              key={flake.id}
+              className="snowflake"
+              style={{
+                animationDuration: flake.animationDuration,
+                left: flake.leftPosition,
+              }}
+            >
+              ❄
+            </div>
+          ))}
+        </div>
+
+        <main className="relative z-10">
+          {children}
+        </main>
       </body>
     </html>
   );

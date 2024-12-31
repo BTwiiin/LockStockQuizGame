@@ -1,0 +1,16 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Question {
+  id            Int      @id @default(autoincrement())
+  text          String
+  hint1         String
+  hint2         String
+  correctAnswer Float
+}
