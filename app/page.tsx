@@ -7,7 +7,7 @@ export default function Home() {
       <div className="flex flex-col space-y-4">
         <Button.Group className="w-full text-white">
           <Button
-            href={`/questions/show`}
+            href={`/users/add`}
             className="w-full flex items-center justify-center outline outline-2
                        outline-blue-700 rounded-full p-3 pl-8 pr-8 m-2 hover:scale-105 bg-blue-700"
           >
@@ -26,12 +26,6 @@ export default function Home() {
                        outline-blue-700 rounded-full p-3 pl-8 pr-8 m-2 hover:scale-105 bg-blue-700"
           >
             Список вопросов
-          </Button>
-          <Button
-            className="w-full flex items-center justify-center outline outline-2
-                       outline-blue-700 rounded-full p-3 pl-8 pr-8 m-2 hover:scale-105 bg-blue-700"
-          >
-            Настройки
           </Button>
           <Button
             className="w-full flex items-center justify-center outline outline-2

@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import "../../globals.css"
 
 type QuestionData = {
   id: number;
@@ -58,12 +59,12 @@ export default function AllQuestionsPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-blue-700 shadow-md rounded-lg p-6 max-w-3xl w-full">
+      <div className="shadow-md rounded-lg p-6 max-w-3xl w-full max-h-[80vh] overflow-auto no-scrollbar">
         <h1 className="text-2xl font-bold mb-4 text-center text-gray-300">
           Все вопросы
         </h1>
 
-        <table className="w-full border-collapse">
+        <table className="bg-blue-700 w-full border-collapse">
           <thead>
             <tr className="bg-blue-800 text-left">
               <th className="p-2 border text-gray-300">ID</th>
